@@ -28,18 +28,6 @@ function App() {
   const [nonFiction, setNonFiction] = useState(false);
   const [children, setChildren] = useState(false);
 
-  // for (let i = 0; i < 3; i++) {
-  //   console.log(bookData["fiction"][i].title);
-  // }
-  const fict = bookData["fiction"].map(( book, index) => {
-    return {
-      ...book,
-      id: index
-    }});
-  console.log(fict);
-  
-  console.log(Array.isArray(bookData["fiction"]));
-
   return (
     <> 
       <button onClick={() => setFiction(prevState => !prevState)}> 
@@ -54,10 +42,26 @@ function App() {
 
       {/* <GenreSelector/> */}
       {/* <BookListing title="hello" author="author" price="price"/> */}
-      {bookData["fiction"].map(( book , index ) => {
-        // Pass the whole object or individual properties to the component
-        return <BookListing key={index} title={book.title} author={book.author} price={book.price}/>
-      })}
+      <div className="bookshelf">
+        {bookData["fiction"].map(( book , index ) => {
+          // Pass the whole object or individual properties to the component
+          return <BookListing key={index} title={book.title} author={book.author} price={book.price}/>
+        })}
+      </div>
+      <br/>
+      <div className="bookshelf">
+        {bookData["non-fiction"].map(( book , index ) => {
+          // Pass the whole object or individual properties to the component
+          return <BookListing key={index} title={book.title} author={book.author} price={book.price}/>
+        })}
+      </div>
+      <br/>
+      <div className="bookshelf">
+        {bookData["children"].map(( book , index ) => {
+          // Pass the whole object or individual properties to the component
+          return <BookListing key={index} title={book.title} author={book.author} price={book.price}/>
+        })}
+      </div>
     </>
   )
 }
