@@ -4,10 +4,12 @@ const BookListing = ({title, author, price}) => {
   return (
     <>
       <div className="book">
-        <h3>{title}</h3>
+        Title: {title} 
         <br/>
-        <p> author: {author}</p>
-        <p> price: ${price}</p>
+        author: {author}
+        <br />
+        price: ${price}
+        <br/>
       </div>
     </>
   );

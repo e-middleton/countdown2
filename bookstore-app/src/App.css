@@ -1,7 +1,28 @@
-.book {
+.display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 0;
   border: 1px solid black;
+  border-radius: 2em;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.book {
+  display: flex;
+  /* flex-grow: auto; */
+  align-items:center;
+  border: 1px solid black;
+  padding: 5px;
+  margin: 5px;
   border-radius: 1em;
-  width: 20em
+  text-wrap: balance;
+  width: 15em;
+  height: 5em;
 }
 
 .bookshelf {
