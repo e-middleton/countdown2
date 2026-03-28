@@ -40,27 +40,25 @@ function App() {
         {children ? "hide children" : "show children"}
       </button>
 
-      {/* <GenreSelector/> */}
+      <br/>
       {/* <BookListing title="hello" author="author" price="price"/> */}
       <div className="bookshelf">
-        {bookData["fiction"].map(( book , index ) => {
-          // Pass the whole object or individual properties to the component
+        {fiction ? bookData["fiction"].map(( book , index ) => {
           return <BookListing key={index} title={book.title} author={book.author} price={book.price}/>
-        })}
+        }) : ""}
       </div>
       <br/>
       <div className="bookshelf">
-        {bookData["non-fiction"].map(( book , index ) => {
-          // Pass the whole object or individual properties to the component
+        {nonFiction ? bookData["non-fiction"].map(( book , index ) => {
           return <BookListing key={index} title={book.title} author={book.author} price={book.price}/>
-        })}
+        }) : ""}
       </div>
+
       <br/>
       <div className="bookshelf">
-        {bookData["children"].map(( book , index ) => {
-          // Pass the whole object or individual properties to the component
+        {children ? bookData["children"].map(( book , index ) => {
           return <BookListing key={index} title={book.title} author={book.author} price={book.price}/>
-        })}
+        }) : ""}
       </div>
     </>
   )
