@@ -5,20 +5,25 @@ import { useState, useEffect } from 'react';
 
 function App() {
   const [data, setData] = useState([]);
-  const [answers, setAnswers] = useState([]);
+  const [answers, setAnswers] = useState([[]]);
   
   useEffect(() => {
     const fetchTrivia = async() => {
-      console.log("running")
       try {
-        const question = await fetch("https://the-trivia-api.com/v2/questions?limit=1")
+        // request a json of trivia questions from the API
+        const question = await fetch("https://the-trivia-api.com/v2/questions?limit=2")
         // const question = await fetch("https://opentdb.com/api.php?amount=1")
         const vals = await question.json();
-        // console.log(vals[0]);
+
+        // set data as the entire json object
         setData(vals);
-        const allAnswers = [vals[0].correctAnswer, ...vals[0].incorrectAnswers];
-        console.log(allAnswers);
-        allAnswers.sort(() => Math.random() - 0.5); // not the best shuffle, but appropriate for this limited usage
+
+        // separate out answer options and shuffle them
+        const allAnswers = [];
+        vals.map((set) => {
+          allAnswers.push([set.correctAnswer, ...set.incorrectAnswers]);
+        })
+        allAnswers.forEach((set) => set.sort(() => Math.random() - 0.5)); // not the best shuffle, but appropriate for this limited usage
         setAnswers(allAnswers);
 
       } catch (error) {
@@ -26,13 +31,13 @@ function App() {
       }
     }
     fetchTrivia();
-    console.log("done running!")
   }, [])
 
   return (
     <>
      <h1>Trivia Game</h1>
-      {data[0] && answers[0] ? <Question question={data[0].question.text} correct={data[0].correctAnswer} allAnswers={answers} /> : ""}
+      {data[0] && answers[0] ? <Question question={data[0].question.text} correct={data[0].correctAnswer} allAnswers={answers[0]} /> : ""}
+      {data[1] && answers[1] ? <Question question={data[1].question.text} correct={data[1].correctAnswer} allAnswers={answers[1]} /> : ""}
     </>
   )
 }
