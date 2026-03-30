@@ -1,7 +1,7 @@
 
 import './App.css'
-import Question from './components/Question'
 import { useState, useEffect } from 'react';
+import QuestionBank from './components/QuestionBank';
 
 function App() {
   const [data, setData] = useState([]);
@@ -36,8 +36,7 @@ function App() {
   return (
     <>
      <h1>Trivia Game</h1>
-      {data[0] && answers[0] ? <Question question={data[0].question.text} correct={data[0].correctAnswer} allAnswers={answers[0]} /> : ""}
-      {data[1] && answers[1] ? <Question question={data[1].question.text} correct={data[1].correctAnswer} allAnswers={answers[1]} /> : ""}
+      {data[0] && answers[0] ? <QuestionBank data={data} answers={answers} /> : ""}
     </>
   )
 }

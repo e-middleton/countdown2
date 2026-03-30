@@ -1,0 +1,14 @@
+.questionBank {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 1em;
+}
+
+.question {
+  display: flex;
+  flex-direction: row;
+}
