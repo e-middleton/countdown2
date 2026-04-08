@@ -11,7 +11,7 @@ function App() {
     const fetchTrivia = async() => {
       try {
         // request a json of trivia questions from the API
-        const question = await fetch("https://the-trivia-api.com/v2/questions?limit=2")
+        const question = await fetch("https://the-trivia-api.com/v2/questions?limit=3")
         // const question = await fetch("https://opentdb.com/api.php?amount=1")
         const vals = await question.json();
 
